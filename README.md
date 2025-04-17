@@ -1,4 +1,4 @@
-### Configuration and Execution
+### Configuration and Execution (Docker Compose)
 * If any of the following steps don't work, watch this [video](https://www.youtube.com/watch?v=QMlpFdOQHfI)
 * Repository Clone
 ```git
@@ -21,33 +21,34 @@ target/email-api-mailpit-0.0.1-SNAPSHOT.jar
 ```git
 docker --version
 ```
-* Once Docker is running, you can build and deploy the containers
+* Once Docker is running, you can build and deploy the containers with docker compose.
 
-#### Docker Compose setup para Desarrollo
+  <br>
 
-Durante el desarrollo se utiliza [`docker-compose.override.yml`](./docker-compose.override.yml), el cual monta el código fuente y ejecuta la app con `spring-boot:run`, permitiendo cambios en caliente sin necesidad de reconstruir el contenedor.
+#### Docker Compose Setup for Development
 
-> 🟡 **Nota**: En el primer uso, es necesario compilar el proyecto al menos una vez para que Maven descargue todas las dependencias.
+During development, [`docker-compose.override.yml`](./docker-compose.override.yml) is used, which builds the source code and runs the app with `spring-boot:run`, allowing hot swaps without having to rebuild the container.
 
-* Compilar el jar una vez para descargar dependencias
+> 🟡 **Note**: Upon first use, you must compile the project at least once for Maven to download all dependencies.
+
+* Compile the jar once to download dependencies
 ```git
 ./mvnw clean package -DskipTests
 ```
-* Levantar el entorno en modo desarrollo, cada vez que se quiera ejecutar la app en desarrollo no sera necesario la compilacion del jar, simplemente ejecutar el siguiente comando
+* Start the environment in development mode. Every time you want to run the app in development, you won't need to compile the jar. Simply run the following command:
 ```git
 docker-compose up
 ```
 
-#### Docker Compose setup para Produccion
+#### Docker Compose Setup for Production
 
-* `docker-compose.yml` está preparado para producción. Usa un Dockerfile que construye la imagen con el JAR compilado.
+* `docker-compose.yml` is ready for production. It uses a Dockerfile that builds the image with the compiled JAR.
 
-* Compilar el jar
+* Compile the jar
 ```git
 ./mvnw clean package -DskipTests
 ```
-* Levantar el entorno en modo producción
+* Start the environment in production mode
 ```git
 docker-compose -f docker-compose.yml up --build
 ```
-

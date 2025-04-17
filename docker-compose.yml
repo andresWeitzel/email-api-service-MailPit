@@ -10,25 +10,15 @@ services:
       POSTGRES_DB: email_notifications
     ports:
       - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
 
   mailpit:
     image: axllent/mailpit
     container_name: mailpit
     ports:
-      - "8025:8025"   # Interfaz web
-      - "1025:1025"   # SMTP
+      - "8025:8025"
+      - "1025:1025"
 
-  app:
-    build: .
-    container_name: email_service
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-      - mailpit
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/email_notifications
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_MAIL_HOST: mailpit
-      SPRING_MAIL_PORT: 1025
+volumes:
+  pg_data:

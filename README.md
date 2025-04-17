@@ -9,7 +9,6 @@ cd email-api-service-MailPit
 
 #### Docker Compose Setup for Development
 
-During development, [`docker-compose.override.yml`](./docker-compose.override.yml) is used, which builds the source code and runs the app with `spring-boot:run`, allowing hot swaps without having to rebuild the container.
 
 > 🟡 **Note**: Upon first use, you must compile the project at least once for Maven to download all dependencies.
 
@@ -29,36 +28,28 @@ target/email-api-mailpit-0.0.1-SNAPSHOT.jar
 ```git
 docker --version
 ```
-* Once Docker is running, you can build and deploy the containers with docker compose.
-* Start the environment in development mode. Every time you want to run the app in development, you won't need to compile the jar. Simply run the following command:
+* Once Docker is running, you can build and deploy the containers with docker compose (This command is only needed once to build).
+* The container for Mailpit and Postgres will be created. 
+```git
+docker-compose up --build
+```
+* After creating the containers with Docker Compose, each time we are going to start the containers we will use the following command, otherwise we will run it from Docker Desktop. Start the environment in development mode. Every time you want to run the app in development, you won't need to compile the jar. Simply run the following command:
 ```git
 docker-compose up
 ```
+* Finally, run the app in development mode with maven.
+```git
+./mvnw spring-boot:run
+or
+mvn spring-boot:run (If you have Maven installed globally)
+```
+* Or from sts right click on the project -> Run As-> Spring boot app
+* We now have the services available for development and testing.
+  
+
 
 <br>
 
 #### Docker Compose Setup for Production
 
-* `docker-compose.yml` is ready for production. It uses a Dockerfile that builds the image with the compiled JAR.
-
-* Compile the jar
-```git
-./mvnw clean package -DskipTests
-or
-mvn clean package -DskipTests (If you have Maven installed globally)
-```
-* This will create a .jar file inside the target/ directory, with a next name:
-```git
-target/email-api-mailpit-0.0.1-SNAPSHOT.jar
-```
-* This file will be used by Docker to build the application image.
-* Before building and running the containers, make sure you have Docker running (for Windows, use [Docker Desktop]([https://nodejs.org/en/download](https://www.docker.com/products/docker-desktop/)))
-* Once installed, make sure Docker is running
-```git
-docker --version
-```
-* Once Docker is running, you can build and deploy the containers with docker compose.
-* Start the environment in production mode
-```git
-docker-compose -f docker-compose.yml up --build
-```
+* Pending

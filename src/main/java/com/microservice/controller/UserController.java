@@ -1,7 +1,5 @@
 package com.microservice.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,10 +15,17 @@ import com.microservice.dto.UserDTO;
 import com.microservice.model.User;
 import com.microservice.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
+@Tag(name = "User Controller", description = "Operations related to users")
 public class UserController {
 
 	private final UserService userService;
@@ -31,37 +36,46 @@ public class UserController {
 	}
 
 	@PostMapping
+	@Operation(summary = "Create a new user", description = "Creates a new user and sends a notification email.")
 	public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) {
+
 		User user = userService.saveUser(userDTO);
 
 		return ResponseEntity.ok(user);
 	}
 
 	@PutMapping("/{id}")
+	@Operation(summary = "Update a user", description = "Updates an existing user and send a notification email.")
 	public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
 		User updatedUser = userService.updateUser(id, userDTO);
 		return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+	@Operation(summary = "Delete a user", description = "Deletes a user by their unique ID and send a notification email.")
+	public ResponseEntity<Void> deleteUser(@Parameter(description = "ID of the user to delete") @PathVariable Long id) {
 		boolean deleted = userService.deleteUser(id);
 		return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
 	}
 
 	@GetMapping()
-	public ResponseEntity<List<User>> getAllUsers() {
-		List<User> userList = userService.getAllUser();
-		return ResponseEntity.ok(userList);
+	@Operation(summary = "Get all users paginated list", description = "Get a pageable list of all registered users.")
+	public ResponseEntity<Page<User>> getAllUsers(
+			@Parameter(description = "Pagination and sorting options for the users list. Default sort by 'id'.", example = "{ \"page\": 0, \"size\": 1, \"sort\": [\"id\"] }") Pageable pageable) {
+		return ResponseEntity.ok(userService.getAllUsers(pageable));
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable Long id) {
+	@Operation(summary = "Get user by ID", description = "Get a user based on their unique ID.")
+	public ResponseEntity<User> getUserById(@Parameter(description = "ID of the user to get") @PathVariable Long id) {
 		return userService.getUserById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+
 	}
 
 	@GetMapping("/email/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+	@Operation(summary = "Get user by email", description = "Get a user using their email address.")
+	public ResponseEntity<User> getUserByEmail(
+			@Parameter(description = "Email of the user to get") @PathVariable String email) {
 		return userService.getUserByEmail(email).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 

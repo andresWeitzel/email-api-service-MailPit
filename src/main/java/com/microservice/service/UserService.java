@@ -1,12 +1,14 @@
 package com.microservice.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.microservice.dto.UserDTO;
+import com.microservice.exception.DuplicateEmailException;
 import com.microservice.model.User;
 import com.microservice.repository.UserRepository;
 
@@ -23,6 +25,10 @@ public class UserService {
 	}
 
 	public User saveUser(UserDTO userDTO) {
+
+		if (userRepository.existsByEmail(userDTO.getEmail())) {
+			throw new DuplicateEmailException("The email " + userDTO.getEmail() + " already exists.");
+		}
 		User user = new User();
 		user.setName(userDTO.getName());
 		user.setEmail(userDTO.getEmail());
@@ -71,8 +77,8 @@ public class UserService {
 		return false;
 	}
 
-	public List<User> getAllUser() {
-		return userRepository.findAll();
+	public Page<User> getAllUsers(Pageable pageable) {
+		return userRepository.findAll(pageable);
 	}
 
 	public Optional<User> getUserById(Long id) {

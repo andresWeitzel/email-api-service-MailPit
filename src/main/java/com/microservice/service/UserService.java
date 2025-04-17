@@ -29,10 +29,46 @@ public class UserService {
 
 		User savedUser = userRepository.save(user);
 
-		emailService.sendEmail(savedUser.getEmail(), "Welcome to Notification Service!!",
-				"Hello" + savedUser.getName() + ",\n\nThank you for registering with us!");
+		emailService.sendEmail(savedUser.getEmail(), "Account register Notification",
+				"Hello " + savedUser.getName() + ",\n\nThank you for registering with us!");
 
 		return savedUser;
+	}
+
+	public User updateUser(Long id, UserDTO userDTO) {
+		Optional<User> existingUserOptional = userRepository.findById(id);
+
+		if (existingUserOptional.isPresent()) {
+			User existingUser = existingUserOptional.get();
+			existingUser.setName(userDTO.getName());
+			existingUser.setEmail(userDTO.getEmail());
+
+			User updatedUser = userRepository.save(existingUser);
+
+			emailService.sendEmail(updatedUser.getEmail(), "Account Update Notification",
+					"Hello " + updatedUser.getName() + ",\n\nYour account has been successfully updated.");
+
+			return updatedUser;
+		} else {
+			throw new RuntimeException("User not found with id: " + id); // O manejarlo como desees
+		}
+	}
+
+	public boolean deleteUser(Long id) {
+		Optional<User> user = userRepository.findById(id);
+		if (user.isPresent()) {
+			User deletedUser = user.get();
+
+			// Eliminar el usuario de la base de datos
+			userRepository.delete(deletedUser);
+
+			// Enviar un correo al usuario informándole sobre la eliminación
+			emailService.sendEmail(deletedUser.getEmail(), "Account Deletion Notification",
+					"Hello " + deletedUser.getName() + ",\n\nYour account has been successfully deleted.");
+
+			return true;
+		}
+		return false;
 	}
 
 	public List<User> getAllUser() {

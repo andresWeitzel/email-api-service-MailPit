@@ -31,14 +31,22 @@ During development, [`docker-compose.override.yml`](./docker-compose.override.ym
 
 > 🟡 **Note**: Upon first use, you must compile the project at least once for Maven to download all dependencies.
 
-* Compile the jar once to download dependencies
+* Before building the Docker image, you need to generate the JAR file of the project. Run the following command from the root directory of the project:
 ```git
 ./mvnw clean package -DskipTests
+or
+mvn clean package -DskipTests (If you have Maven installed globally)
+```
+* This will create a .jar file inside the target/ directory, with a next name:
+```git
+target/email-api-mailpit-0.0.1-SNAPSHOT.jar
 ```
 * Start the environment in development mode. Every time you want to run the app in development, you won't need to compile the jar. Simply run the following command:
 ```git
 docker-compose up
 ```
+
+<br>
 
 #### Docker Compose Setup for Production
 
@@ -47,6 +55,8 @@ docker-compose up
 * Compile the jar
 ```git
 ./mvnw clean package -DskipTests
+or
+mvn clean package -DskipTests (If you have Maven installed globally)
 ```
 * Start the environment in production mode
 ```git

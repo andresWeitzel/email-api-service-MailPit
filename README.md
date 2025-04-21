@@ -54,3 +54,11 @@ mvn spring-boot:run (If you have Maven installed globally)
 #### Docker Compose Setup for Production
 
 * Pending
+
+  <br>
+
+### Testing
+* The MailPit web interface will be available at `http://localhost:8025`, where you can view sent emails.
+* You can test the API using Postman or swagger or any HTTP client by sending request to `http://localhost:8080/api/v1/users` with the following JSON body.
+* The Swagger UI web interface will be available at `http://localhost:8080/swagger-ui/index.html`, where you can test all endpoints.
+

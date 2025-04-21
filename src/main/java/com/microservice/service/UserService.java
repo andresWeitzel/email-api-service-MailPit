@@ -16,93 +16,101 @@ import com.microservice.repository.UserRepository;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-    private final EmailService emailService;
+	private final UserRepository userRepository;
+	private final EmailService emailService;
+	private final AuditLogService auditLogService;
 
-    @Autowired
-    public UserService(UserRepository userRepository, EmailService emailService) {
-        this.userRepository = userRepository;
-        this.emailService = emailService;
-    }
+	@Autowired
+	public UserService(UserRepository userRepository, EmailService emailService, AuditLogService auditLogService) {
+		this.userRepository = userRepository;
+		this.emailService = emailService;
+		this.auditLogService = auditLogService;
+	}
 
-    // Método para guardar un nuevo usuario
-    public User saveUser(UserDTO userDTO) {
-        // Verificar si el correo ya existe
-        if (userRepository.existsByEmail(userDTO.getEmail())) {
-            throw new DuplicateEmailException("The email " + userDTO.getEmail() + " already exists.");
-        }
+	// Método para guardar un nuevo usuario
+	public User saveUser(UserDTO userDTO) {
+		// Verificar si el correo ya existe
+		if (userRepository.existsByEmail(userDTO.getEmail())) {
+			throw new DuplicateEmailException("The email " + userDTO.getEmail() + " already exists.");
+		}
 
-        // Crear el usuario
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
+		// Crear el usuario
+		User user = new User();
+		user.setName(userDTO.getName());
+		user.setEmail(userDTO.getEmail());
 
-        // Guardar el usuario en la base de datos
-        User savedUser = userRepository.save(user);
+		// Guardar el usuario en la base de datos
+		User savedUser = userRepository.save(user);
 
-        // Enviar un correo de notificación de registro
-        emailService.sendEmail(savedUser.getEmail(), "Account register Notification",
-                "Hello " + savedUser.getName() + ",\n\nThank you for registering with us!");
+		auditLogService.saveLog("User", "CREATE", "system_admin", "Created user with email: " + savedUser.getEmail());
 
-        return savedUser;
-    }
+		// Enviar un correo de notificación de registro
+		emailService.sendEmail(savedUser.getEmail(), "Account register Notification",
+				"Hello " + savedUser.getName() + ",\n\nThank you for registering with us!");
 
-    // Método para actualizar un usuario existente
-    public User updateUser(Long id, UserDTO userDTO) {
-        Optional<User> existingUserOptional = userRepository.findById(id);
+		return savedUser;
+	}
 
-        if (existingUserOptional.isPresent()) {
-            User existingUser = existingUserOptional.get();
-            existingUser.setName(userDTO.getName());
-            existingUser.setEmail(userDTO.getEmail());
+	// Método para actualizar un usuario existente
+	public User updateUser(Long id, UserDTO userDTO) {
+		Optional<User> existingUserOptional = userRepository.findById(id);
 
-            // Guardar el usuario actualizado
-            User updatedUser = userRepository.save(existingUser);
+		if (existingUserOptional.isPresent()) {
+			User existingUser = existingUserOptional.get();
+			existingUser.setName(userDTO.getName());
+			existingUser.setEmail(userDTO.getEmail());
 
-            // Enviar un correo de notificación de actualización
-            emailService.sendEmail(updatedUser.getEmail(), "Account Update Notification",
-                    "Hello " + updatedUser.getName() + ",\n\nYour account has been successfully updated.");
+			// Guardar el usuario actualizado
+			User updatedUser = userRepository.save(existingUser);
 
-            return updatedUser;
-        } else {
-            // Lanzar la excepción si no se encuentra el usuario
-            throw new ResourceNotFoundException("User with ID " + id + " not found");
-        }
-    }
+			auditLogService.saveLog("User", "UPDATE", "system_admin", "Updated user ID " + id);
 
-    // Método para eliminar un usuario
-    public User deleteUser(Long id) {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isPresent()) {
-            User deletedUser = user.get();
+			// Enviar un correo de notificación de actualización
+			emailService.sendEmail(updatedUser.getEmail(), "Account Update Notification",
+					"Hello " + updatedUser.getName() + ",\n\nYour account has been successfully updated.");
 
-            // Eliminar el usuario de la base de datos
-            userRepository.delete(deletedUser);
+			return updatedUser;
+		} else {
+			// Lanzar la excepción si no se encuentra el usuario
+			throw new ResourceNotFoundException("User with ID " + id + " not found");
+		}
+	}
 
-            // Enviar un correo de notificación de eliminación
-            emailService.sendEmail(deletedUser.getEmail(), "Account Deletion Notification",
-                    "Hello " + deletedUser.getName() + ",\n\nYour account has been successfully deleted.");
+	// Método para eliminar un usuario
+	public User deleteUser(Long id) {
+		Optional<User> user = userRepository.findById(id);
+		if (user.isPresent()) {
+			User deletedUser = user.get();
 
-            return deletedUser;
-        } else {
-            // Lanzar la excepción si no se encuentra el usuario
-            throw new ResourceNotFoundException("User with ID " + id + " not found");
-        }
-    }
+			// Eliminar el usuario de la base de datos
+			userRepository.delete(deletedUser);
 
-    // Método para obtener todos los usuarios con paginación
-    public Page<User> getAllUsers(Pageable pageable) {
-        return userRepository.findAll(pageable);
-    }
+			auditLogService.saveLog("User", "DELETE", "system_admin", "Deleted user ID " + id);
 
-    // Método para obtener un usuario por ID
-    public User getUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
-    }
+			// Enviar un correo de notificación de eliminación
+			emailService.sendEmail(deletedUser.getEmail(), "Account Deletion Notification",
+					"Hello " + deletedUser.getName() + ",\n\nYour account has been successfully deleted.");
 
-    // Método para obtener un usuario por correo electrónico
-    public Optional<User> getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+			return deletedUser;
+		} else {
+			// Lanzar la excepción si no se encuentra el usuario
+			throw new ResourceNotFoundException("User with ID " + id + " not found");
+		}
+	}
+
+	// Método para obtener todos los usuarios con paginación
+	public Page<User> getAllUsers(Pageable pageable) {
+		return userRepository.findAll(pageable);
+	}
+
+	// Método para obtener un usuario por ID
+	public User getUserById(Long id) {
+		return userRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
+	}
+
+	// Método para obtener un usuario por correo electrónico
+	public Optional<User> getUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 }

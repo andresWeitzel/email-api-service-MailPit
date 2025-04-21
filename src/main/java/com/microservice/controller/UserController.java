@@ -25,6 +25,7 @@ import com.microservice.model.User;
 import com.microservice.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Pageable;
 
@@ -91,8 +92,9 @@ public class UserController {
 	}
 
 	@GetMapping
-	@Operation(summary = "Get all users", description = "Fetches all users with pagination support.")
-	public ResponseEntity<?> getAllUsers(Pageable pageable) {
+	@Operation(summary = "Get all paginated users", description = "Fetches all users with pagination support.")
+	public ResponseEntity<?> getAllUsers(
+			@Parameter(description = "Pagination and sorting options for the users list. Default sort by 'id'.", example = "{ \"page\": 0, \"size\": 30, \"sort\": [\"id\"] }") Pageable pageable) {
 		return ResponseEntity.ok(userService.getAllUsers(pageable));
 	}
 }

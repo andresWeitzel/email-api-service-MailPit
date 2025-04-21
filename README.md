@@ -28,6 +28,7 @@ target/email-api-mailpit-0.0.1-SNAPSHOT.jar
 ```git
 docker --version
 ```
+`Important`: Check that no other service (ej:postgres) is running as a daemon on the system, otherwise a connection problem will occur on the port.
 * Once Docker is running, you can build and deploy the containers with docker compose (This command is only needed once to build).
 * The container for Mailpit and Postgres will be created. 
 ```git

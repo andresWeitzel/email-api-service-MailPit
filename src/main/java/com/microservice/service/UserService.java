@@ -9,84 +9,100 @@ import org.springframework.stereotype.Service;
 
 import com.microservice.dto.UserDTO;
 import com.microservice.exception.DuplicateEmailException;
+import com.microservice.exception.ResourceNotFoundException;
 import com.microservice.model.User;
 import com.microservice.repository.UserRepository;
 
 @Service
 public class UserService {
 
-	private final UserRepository userRepository;
-	private final EmailService emailService;
+    private final UserRepository userRepository;
+    private final EmailService emailService;
 
-	@Autowired
-	public UserService(UserRepository userRepository, EmailService emailService) {
-		this.userRepository = userRepository;
-		this.emailService = emailService;
-	}
+    @Autowired
+    public UserService(UserRepository userRepository, EmailService emailService) {
+        this.userRepository = userRepository;
+        this.emailService = emailService;
+    }
 
-	public User saveUser(UserDTO userDTO) {
+    // Método para guardar un nuevo usuario
+    public User saveUser(UserDTO userDTO) {
+        // Verificar si el correo ya existe
+        if (userRepository.existsByEmail(userDTO.getEmail())) {
+            throw new DuplicateEmailException("The email " + userDTO.getEmail() + " already exists.");
+        }
 
-		if (userRepository.existsByEmail(userDTO.getEmail())) {
-			throw new DuplicateEmailException("The email " + userDTO.getEmail() + " already exists.");
-		}
-		User user = new User();
-		user.setName(userDTO.getName());
-		user.setEmail(userDTO.getEmail());
+        // Crear el usuario
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
 
-		User savedUser = userRepository.save(user);
+        // Guardar el usuario en la base de datos
+        User savedUser = userRepository.save(user);
 
-		emailService.sendEmail(savedUser.getEmail(), "Account register Notification",
-				"Hello " + savedUser.getName() + ",\n\nThank you for registering with us!");
+        // Enviar un correo de notificación de registro
+        emailService.sendEmail(savedUser.getEmail(), "Account register Notification",
+                "Hello " + savedUser.getName() + ",\n\nThank you for registering with us!");
 
-		return savedUser;
-	}
+        return savedUser;
+    }
 
-	public User updateUser(Long id, UserDTO userDTO) {
-		Optional<User> existingUserOptional = userRepository.findById(id);
+    // Método para actualizar un usuario existente
+    public User updateUser(Long id, UserDTO userDTO) {
+        Optional<User> existingUserOptional = userRepository.findById(id);
 
-		if (existingUserOptional.isPresent()) {
-			User existingUser = existingUserOptional.get();
-			existingUser.setName(userDTO.getName());
-			existingUser.setEmail(userDTO.getEmail());
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+            existingUser.setName(userDTO.getName());
+            existingUser.setEmail(userDTO.getEmail());
 
-			User updatedUser = userRepository.save(existingUser);
+            // Guardar el usuario actualizado
+            User updatedUser = userRepository.save(existingUser);
 
-			emailService.sendEmail(updatedUser.getEmail(), "Account Update Notification",
-					"Hello " + updatedUser.getName() + ",\n\nYour account has been successfully updated.");
+            // Enviar un correo de notificación de actualización
+            emailService.sendEmail(updatedUser.getEmail(), "Account Update Notification",
+                    "Hello " + updatedUser.getName() + ",\n\nYour account has been successfully updated.");
 
-			return updatedUser;
-		} else {
-			throw new RuntimeException("User not found with id: " + id); // O manejarlo como desees
-		}
-	}
+            return updatedUser;
+        } else {
+            // Lanzar la excepción si no se encuentra el usuario
+            throw new ResourceNotFoundException("User with ID " + id + " not found");
+        }
+    }
 
-	public boolean deleteUser(Long id) {
-		Optional<User> user = userRepository.findById(id);
-		if (user.isPresent()) {
-			User deletedUser = user.get();
+    // Método para eliminar un usuario
+    public User deleteUser(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            User deletedUser = user.get();
 
-			// Eliminar el usuario de la base de datos
-			userRepository.delete(deletedUser);
+            // Eliminar el usuario de la base de datos
+            userRepository.delete(deletedUser);
 
-			// Enviar un correo al usuario informándole sobre la eliminación
-			emailService.sendEmail(deletedUser.getEmail(), "Account Deletion Notification",
-					"Hello " + deletedUser.getName() + ",\n\nYour account has been successfully deleted.");
+            // Enviar un correo de notificación de eliminación
+            emailService.sendEmail(deletedUser.getEmail(), "Account Deletion Notification",
+                    "Hello " + deletedUser.getName() + ",\n\nYour account has been successfully deleted.");
 
-			return true;
-		}
-		return false;
-	}
+            return deletedUser;
+        } else {
+            // Lanzar la excepción si no se encuentra el usuario
+            throw new ResourceNotFoundException("User with ID " + id + " not found");
+        }
+    }
 
-	public Page<User> getAllUsers(Pageable pageable) {
-		return userRepository.findAll(pageable);
-	}
+    // Método para obtener todos los usuarios con paginación
+    public Page<User> getAllUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
 
-	public Optional<User> getUserById(Long id) {
-		return userRepository.findById(id);
-	}
+    // Método para obtener un usuario por ID
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
+    }
 
-	public Optional<User> getUserByEmail(String email) {
-		return userRepository.findByEmail(email);
-	}
-
+    // Método para obtener un usuario por correo electrónico
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

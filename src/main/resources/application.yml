@@ -12,7 +12,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-    
+
   mail:
     host: localhost
     port: 1025
@@ -23,4 +23,36 @@ spring:
         smtp:
           auth: false
           starttls:
-            enable: false      
+            enable: false
+
+  profiles:
+    active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      access: unrestricted  
+  info:
+    env:
+      enabled: true
+  server:
+    port: 8080
+
+info:
+  app:
+    name: email-api-mailpit
+    description: API for managing users and sending emails
+    version: 1.0
+    developer:
+      name: Your Name
+      email: youremail@example.com
+
+logging:
+  level:
+    root: INFO

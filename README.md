@@ -9,20 +9,6 @@ cd email-api-service-MailPit
 
 #### Docker Compose Setup for Development
 
-
-> 🟡 **Note**: Upon first use, you must compile the project at least once for Maven to download all dependencies.
-
-* Before building the Docker image, you need to generate the JAR file of the project. Run the following command from the root directory of the project:
-```git
-./mvnw clean package -DskipTests
-or
-mvn clean package -DskipTests (If you have Maven installed globally)
-```
-* This will create a .jar file inside the target/ directory, with a next name:
-```git
-target/email-api-mailpit-0.0.1-SNAPSHOT.jar
-```
-* This file will be used by Docker to build the application image.
 * Before building and running the containers, make sure you have Docker running (for Windows, use [Docker Desktop]([https://nodejs.org/en/download](https://www.docker.com/products/docker-desktop/)))
 * Once installed, make sure Docker is running
 ```git
@@ -38,15 +24,7 @@ docker-compose up --build
 ```git
 docker-compose up
 ```
-* Finally, run the app in development mode with maven.
-```git
-./mvnw spring-boot:run
-or
-mvn spring-boot:run (If you have Maven installed globally)
-```
-* Or from sts right click on the project -> Run As-> Spring boot app
-* We now have the services available for development and testing.
-  
+
 
 
 <br>

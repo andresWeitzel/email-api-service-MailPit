@@ -69,7 +69,7 @@ public class AuditLogController {
 	@GetMapping("/entity")
 	@Operation(summary = "Get audit logs by entity", description = "Fetches audit logs by the entity name.")
 	public ResponseEntity<?> getAuditLogsByEntity(@RequestParam String entity,
-			@Parameter(description = "Pagination and sorting options for the audit log list.") Pageable pageable) {
+			@Parameter(description = "Pagination and sorting options for the audit log list. Default sort by 'id'.", example = "{ \"page\": 0, \"size\": 30, \"sort\": [\"id\"] }") Pageable pageable) {
 		Page<AuditLog> logsPage = auditLogService.getLogsByEntity(entity, pageable);
 		return ResponseEntity.ok(logsPage);
 	}
@@ -77,7 +77,7 @@ public class AuditLogController {
 	@GetMapping("/action")
 	@Operation(summary = "Get audit logs by action", description = "Fetches audit logs by the action type (CREATE, UPDATE, DELETE).")
 	public ResponseEntity<?> getAuditLogsByAction(@RequestParam String action,
-			@Parameter(description = "Pagination and sorting options for the audit log list.") Pageable pageable) {
+			@Parameter(description = "Pagination and sorting options for the audit log list. Default sort by 'id'.", example = "{ \"page\": 0, \"size\": 30, \"sort\": [\"id\"] }") Pageable pageable) {
 		Page<AuditLog> logsPage = auditLogService.getLogsByAction(action, pageable);
 		return ResponseEntity.ok(logsPage);
 	}
@@ -85,7 +85,7 @@ public class AuditLogController {
 	@GetMapping("/username")
 	@Operation(summary = "Get audit logs by username", description = "Fetches audit logs by the username of the person who performed the action.")
 	public ResponseEntity<?> getAuditLogsByUsername(@RequestParam String username,
-			@Parameter(description = "Pagination and sorting options for the audit log list.") Pageable pageable) {
+			@Parameter(description = "Pagination and sorting options for the audit log list. Default sort by 'id'.", example = "{ \"page\": 0, \"size\": 30, \"sort\": [\"id\"] }") Pageable pageable) {
 		Page<AuditLog> logsPage = auditLogService.getLogsByUsername(username, pageable);
 		return ResponseEntity.ok(logsPage);
 	}
@@ -93,7 +93,7 @@ public class AuditLogController {
 	@GetMapping("/details")
 	@Operation(summary = "Get audit logs by details", description = "Fetches audit logs by the details of the action performed.")
 	public ResponseEntity<?> getAuditLogsByDetails(@RequestParam String details,
-			@Parameter(description = "Pagination and sorting options for the audit log list.") Pageable pageable) {
+			@Parameter(description = "Pagination and sorting options for the audit log list. Default sort by 'id'.", example = "{ \"page\": 0, \"size\": 30, \"sort\": [\"id\"] }") Pageable pageable) {
 		Page<AuditLog> logsPage = auditLogService.getLogsByDetails(details, pageable);
 		return ResponseEntity.ok(logsPage);
 	}

@@ -35,8 +35,72 @@ docker-compose up
 
   <br>
 
+# Endpoints de Servicios Dockerizados
+
 ### Testing
-* The MailPit web interface will be available at `http://localhost:8025`, where you can view sent emails.
-* You can test the API using Postman or swagger or any HTTP client by sending request to `http://localhost:8080/api/v1/users` with the following JSON body.
-* The Swagger UI web interface will be available at `http://localhost:8080/swagger-ui/index.html`, where you can test all endpoints.
+
+- **Actuator Endpoints:**
+  - `GET /actuator`  
+    ➡️ [http://localhost:8080/actuator](http://localhost:8080/actuator)
+
+  - `GET /actuator/health`  
+    ➡️ [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
+
+  - `GET /actuator/metrics`  
+    ➡️ [http://localhost:8080/actuator/metrics](http://localhost:8080/actuator/metrics)
+
+  - `GET /actuator/prometheus`  
+    ➡️ [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus)
+
+  - `GET /actuator/env`  
+    ➡️ [http://localhost:8080/actuator/env](http://localhost:8080/actuator/env)
+
+
+- **Swagger UI:**
+  - `GET /swagger-ui.html`  
+    ➡️ [[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui/index.html)
+
+  - `GET /v3/api-docs` – Documentación OpenAPI  
+    ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+---
+
+- **MailPit:**
+
+- `Web UI`  
+  ➡️ [http://localhost:8025](http://localhost:8025)
+
+- `SMTP Server` 
+  ➡️ `smtp://localhost:1025`
+
+---
+
+- **Prometheus:**
+
+- `UI Web`
+  ➡️ [http://localhost:9090](http://localhost:9090)
+
+---
+
+- **Grafana:**
+
+- `UI Web` 
+  ➡️ [http://localhost:3000](http://localhost:3000)  
+  🧾 Credenciales por defecto:
+  - Usuario: `admin`
+  - Contraseña: `admin`
+
+---
+
+- **PostgreSQL:**
+
+- `JDBC URL`  
+  ➡️ `jdbc:postgresql://localhost:5432/mydatabase`  
+  *  Usuario: `user`  
+  *  Contraseña: `password`
+
+---
+
+> 💡 *Asegúrate de que todos los contenedores estén corriendo con `docker-compose up -d` antes de acceder a estos endpoints.*
+
 

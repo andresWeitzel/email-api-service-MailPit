@@ -1,3 +1,8 @@
+# User Management API with Email Notifications and Monitoring
+A comprehensive REST API developed with Spring Boot to manage users and send email notifications using Mailpit as the SMTP server. It integrates seamlessly with PostgreSQL for data storage, and includes features for audit logging, Prometheus monitoring, Grafana dashboards, and automatic API documentation with Swagger/OpenAPI. This API is designed for easy development, testing, and extension, making it ideal for building robust user management systems with comprehensive observability.
+
+<br>
+
 ## Configuration and Execution (Docker Compose)
 * If any of the following steps don't work, watch this [x](x)
 * Repository Clone
@@ -26,12 +31,6 @@ docker-compose up
 ```
 
 
-
-<br>
-
-#### Docker Compose Setup for Production
-
-* Pending
 
 <br>
 

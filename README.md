@@ -34,6 +34,7 @@ docker-compose up
 * Pending
 
 <br>
+
 <br>
 
 
@@ -42,23 +43,48 @@ docker-compose up
 
 - **Audit Log API**
 
-  - `Base URL: /api/v1/audit-log`  
+  - `POST /api/v1/audit-log`  
+  ➡️ [http://localhost:8080/api/v1/audit-log](http://localhost:8080/api/v1/audit-log)
+
+  - `PUT /api/v1/audit-log/{id}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/{id}](http://localhost:8080/api/v1/audit-log/1)
   
-  - `POST`  
-    -  `/api/v1/audit-log`
+  - `DELETE /api/v1/audit-log/{id}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/{id}](http://localhost:8080/api/v1/audit-log/1)
+  
+  - `GET /api/v1/audit-log`  
+    ➡️ [http://localhost:8080/api/v1/audit-log](http://localhost:8080/api/v1/audit-log)
+  
+  - `GET /api/v1/audit-log/entity?entity={entityName}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/entity?entity=User](http://localhost:8080/api/v1/audit-log/entity?entity=User)
+  
+  - `GET /api/v1/audit-log/action?action={actionType}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/action?action=CREATE](http://localhost:8080/api/v1/audit-log/action?action=CREATE)
+  
+  - `GET /api/v1/audit-log/username?username={username}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/username?username=admin](http://localhost:8080/api/v1/audit-log/username?username=admin)
+  
+  - `GET /api/v1/audit-log/details?details={details}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/details?details=Created+new+user](http://localhost:8080/api/v1/audit-log/details?details=Created+new+user)
 
-  - `PUT`  
-    -  `/api/v1/audit-log/{id}`
+- **User API**
+  
+  - `POST /api/v1/users`  
+    ➡️ [http://localhost:8080/api/v1/users](http://localhost:8080/api/v1/users)
+  
+  - `PUT /api/v1/users/{id}`  
+    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
+  
+  - `DELETE /api/v1/users/{id}`  
+    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
+  
+  - `GET /api/v1/users/{id}`  
+    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
+  
+  - `GET /api/v1/users`  
+    ➡️ [http://localhost:8080/api/v1/users](http://localhost:8080/api/v1/users)
 
-- `DELETE`  
-    -  `/api/v1/audit-log/{id}`
-
-- `GET`  
-    -  `/api/v1/audit-log`
-    -  `/api/v1/audit-log/entity?entity={entityName}`
-    -  `/api/v1/audit-log/action?action={actionType}`
-    -  `/api/v1/audit-log/username?username={username}`
-    -  `/api/v1/audit-log/details?details={details}`
+    
 
 - **Swagger UI:**
   - `GET /swagger-ui.html`  
@@ -66,6 +92,7 @@ docker-compose up
 
   - `GET /v3/api-docs` – Documentación OpenAPI  
     ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
 
 
 - **Actuator Endpoints:**

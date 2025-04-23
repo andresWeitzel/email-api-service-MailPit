@@ -39,6 +39,35 @@ docker-compose up
 
 ### Testing de Endpoints de Servicios Dockerizados
 
+
+- **Audit Log API**
+
+  - `Base URL: /api/v1/audit-log`  
+  
+  - `POST`  
+    -  `/api/v1/audit-log`
+
+  - `PUT`  
+    -  `/api/v1/audit-log/{id}`
+
+- `DELETE`  
+    -  `/api/v1/audit-log/{id}`
+
+- `GET`  
+    -  `/api/v1/audit-log`
+    -  `/api/v1/audit-log/entity?entity={entityName}`
+    -  `/api/v1/audit-log/action?action={actionType}`
+    -  `/api/v1/audit-log/username?username={username}`
+    -  `/api/v1/audit-log/details?details={details}`
+
+- **Swagger UI:**
+  - `GET /swagger-ui.html`  
+    ➡️ [[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui/index.html)
+
+  - `GET /v3/api-docs` – Documentación OpenAPI  
+    ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+
 - **Actuator Endpoints:**
   - `GET /actuator`  
     ➡️ [http://localhost:8080/actuator](http://localhost:8080/actuator)
@@ -56,47 +85,40 @@ docker-compose up
     ➡️ [http://localhost:8080/actuator/env](http://localhost:8080/actuator/env)
 
 
-- **Swagger UI:**
-  - `GET /swagger-ui.html`  
-    ➡️ [[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui/index.html)
-
-  - `GET /v3/api-docs` – Documentación OpenAPI  
-    ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
-
 
 
 - **MailPit:**
 
-- `Web UI`  
-  ➡️ [http://localhost:8025](http://localhost:8025)
-
-- `SMTP Server` 
-  ➡️ `smtp://localhost:1025`
+  - `Web UI`  
+    ➡️ [http://localhost:8025](http://localhost:8025)
+  
+  - `SMTP Server` 
+    ➡️ `smtp://localhost:1025`
 
 
 - **Prometheus:**
 
-- `UI Web`
-  ➡️ [http://localhost:9090](http://localhost:9090)
+  - `UI Web`
+    ➡️ [http://localhost:9090](http://localhost:9090)
 
 
 
 - **Grafana:**
 
-- `UI Web` 
-  ➡️ [http://localhost:3000](http://localhost:3000)  
-  🧾 Credenciales por defecto:
-  - Usuario: `admin`
-  - Contraseña: `admin`
+  - `UI Web` 
+    ➡️ [http://localhost:3000](http://localhost:3000)  
+    🧾 Credenciales por defecto:
+    - Usuario: `admin`
+    - Contraseña: `admin`
 
 
 
 - **PostgreSQL:**
 
-- `JDBC URL`  
-  ➡️ `jdbc:postgresql://localhost:5432/mydatabase`  
-  *  Usuario: `user`  
-  *  Contraseña: `password`
+  - `JDBC URL`  
+    ➡️ `jdbc:postgresql://localhost:5432/mydatabase`  
+    *  Usuario: `user`  
+    *  Contraseña: `password`
 
 
 

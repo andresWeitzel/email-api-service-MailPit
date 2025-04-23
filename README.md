@@ -1,4 +1,4 @@
-### Configuration and Execution (Docker Compose)
+## Configuration and Execution (Docker Compose)
 * If any of the following steps don't work, watch this [x](x)
 * Repository Clone
 ```git
@@ -33,11 +33,11 @@ docker-compose up
 
 * Pending
 
-  <br>
+<br>
+<br>
 
-# Endpoints de Servicios Dockerizados
 
-### Testing
+### Testing de Endpoints de Servicios Dockerizados
 
 - **Actuator Endpoints:**
   - `GET /actuator`  
@@ -63,7 +63,7 @@ docker-compose up
   - `GET /v3/api-docs` – Documentación OpenAPI  
     ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
 
----
+
 
 - **MailPit:**
 
@@ -73,14 +73,13 @@ docker-compose up
 - `SMTP Server` 
   ➡️ `smtp://localhost:1025`
 
----
 
 - **Prometheus:**
 
 - `UI Web`
   ➡️ [http://localhost:9090](http://localhost:9090)
 
----
+
 
 - **Grafana:**
 
@@ -90,7 +89,7 @@ docker-compose up
   - Usuario: `admin`
   - Contraseña: `admin`
 
----
+
 
 - **PostgreSQL:**
 
@@ -99,8 +98,6 @@ docker-compose up
   *  Usuario: `user`  
   *  Contraseña: `password`
 
----
 
-> 💡 *Asegúrate de que todos los contenedores estén corriendo con `docker-compose up -d` antes de acceder a estos endpoints.*
 
 

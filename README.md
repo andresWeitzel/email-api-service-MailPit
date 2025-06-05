@@ -1,7 +1,80 @@
-# User Management API with Email Notifications and Monitoring
+<div align = "center">
+  <img src="./src/main/resources/static/img/email-project.png" >
+</div>
+
+<div align="right">
+    <img width="20" height="20" src="./src/main/resources/static/icons/backend/java/png/log-four-j.png" />
+    <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/docker.png" />
+    <img width="24" height="24" src="./src/main/resources/static/icons/backend/java/png/java.png" />
+    <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/maven.png" />
+    <img width="22" height="22" src="./src/main/resources/static/icons/devops/png/postman.png" />
+    <img width="22" height="22" src="./src/main/resources/static/icons/devops/png/git.png" />
+    <img width="20" height="20" src="./src/main/resources/static/icons/backend/java/png/junit.png" />
+    <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/swagger.png" />
+    <img width="20" height="20" src="./src/main/resources/static/icons/backend/java/png/spring-boot.png" />
+    
+</div>
+
+<br>
+
+<div align="right">
+     <a href="./src/main/resources/static/translation/README.es.md" target="_blank">
+       <img src="./src/main/resources/static/img/arg-flag.jpg" width="10%" height="10%" />
+   </a>
+    <a href="https://github.com/andresWeitzel/emails-notifications-MailHog" target="_blank">
+       <img src="./src/main/resources/static/img/eeuu-flag.jpg" width="10%" height="10%" />
+   </a>
+</div>
+
+
+<br>
+
+<div align="center">
+
+# User Management Email API
+
+</div>
+
+<br>
+
 A comprehensive REST API developed with Spring Boot to manage users and send email notifications using Mailpit as the SMTP server. It integrates seamlessly with PostgreSQL for data storage, and includes features for audit logging, Prometheus monitoring, Grafana dashboards, and automatic API documentation with Swagger/OpenAPI. This API is designed for easy development, testing, and extension, making it ideal for building robust user management systems with comprehensive observability.
 
 <br>
+
+## Technologies and Dependencies
+
+* Spring Boot: Core framework for building Java applications
+* Spring Boot Starter Web: For creating RESTful web applications
+* Spring Boot Starter Mail: For handling emails
+* Spring Boot Starter Data JPA: For database operations
+* Spring Boot Starter Actuator: For monitoring and metrics
+* PostgreSQL: Database for data persistence
+* Mailpit: SMTP server for local email testing
+* Docker & Docker Compose: For containerization and orchestration
+* Prometheus: For metrics collection
+* Grafana: For metrics visualization
+* Swagger/OpenAPI: For API documentation
+* Lombok: For reducing boilerplate code
+* JUnit: For unit testing
+
+## Features
+
+* User Management: Complete CRUD operations for user management
+* Email Notifications: Automated email sending for user events
+* Audit Logging: Comprehensive tracking of all system actions
+* Monitoring: Real-time metrics and health checks
+* API Documentation: Interactive Swagger UI for API exploration
+* Containerization: Easy deployment with Docker
+* Database Integration: Robust PostgreSQL integration
+* Metrics Visualization: Grafana dashboards for system monitoring
+
+## Requirements
+
+* Java 17 or higher
+* Docker and Docker Compose
+* Maven for building the project
+* PostgreSQL (if running without Docker)
+* Mailpit (if running without Docker)
 
 ## Configuration and Execution (Docker Compose)
 * If any of the following steps don't work, watch this [x](x)

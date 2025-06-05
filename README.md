@@ -17,6 +17,8 @@
 
 <br>
 
+<br>
+
 <div align="right">
      <a href="./src/main/resources/static/translation/README.es.md" target="_blank">
        <img src="./src/main/resources/static/img/arg-flag.jpg" width="10%" height="10%" />

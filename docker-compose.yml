@@ -1,4 +1,3 @@
-
 services:
   postgres:
     image: postgres:latest
@@ -40,30 +39,34 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
     networks:
       - app-network
     depends_on:
       - prometheus
 
-  springboot-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: springboot-app-container
-    depends_on:
-      - postgres
-      - mailpit
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydatabase
-      SPRING_DATASOURCE_USERNAME: user
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_MAIL_HOST: mailpit
-      SPRING_MAIL_PORT: 1025
-    networks:
-      - app-network
-    restart: always
+  # Comentado para desarrollo local - ejecutar la app Spring Boot localmente
+  # springboot-app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: springboot-app-container
+  #   depends_on:
+  #     - postgres
+  #     - mailpit
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydatabase
+  #     SPRING_DATASOURCE_USERNAME: user
+  #     SPRING_DATASOURCE_PASSWORD: password
+  #     SPRING_MAIL_HOST: mailpit
+  #     SPRING_MAIL_PORT: 1025
+  #   networks:
+  #     - app-network
+  #   restart: always
 
 volumes:
   postgres_data:

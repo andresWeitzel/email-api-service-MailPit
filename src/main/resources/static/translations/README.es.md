@@ -22,10 +22,10 @@
 <br>
 
 <div align="right">
-  <a href="../translations/README.es.md" target="_blank">
+  <a href="./README.es.md" target="_blank">
     <img src="../img/arg-flag.jpg" width="65" height="40" alt="Español" />
   </a>
-  <a href="https://github.com/andresWeitzel/emails-notifications-MailHog" target="_blank">
+  <a href="../../../../../README.md" target="_blank">
     <img src="../img/eeuu-flag.jpg" width="65" height="40" alt="English" />
   </a>
 </div>
@@ -39,7 +39,7 @@
 </div>
 
 
-Una API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar notificaciones por email utilizando Mailpit como servidor SMTP. Se integra perfectamente con PostgreSQL para el almacenamiento de datos, e incluye características para registro de auditoría, monitoreo con Prometheus, dashboards de Grafana y documentación automática de API con Swagger/OpenAPI.
+API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar notificaciones por email utilizando Mailpit como servidor SMTP. Se integra perfectamente con PostgreSQL para el almacenamiento de datos, e incluye características para registro de auditoría, monitoreo con Prometheus, dashboards de Grafana y documentación automática de API con Swagger/OpenAPI.
 
 * [Lista de reproducción de pruebas funcionales](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C) <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C" target="_blank"> <img src="../icons/social-networks/yt.png" width="25" /></a>
 

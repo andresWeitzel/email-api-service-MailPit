@@ -26,7 +26,7 @@
   <a href="./src/main/resources/static/translations/README.es.md" target="_blank">
     <img src="./src/main/resources/static/img/arg-flag.jpg" width="65" height="40" alt="Español" />
   </a>
-  <a href="https://github.com/andresWeitzel/emails-notifications-MailHog" target="_blank">
+  <a href="./README.md" target="_blank">
     <img src="./src/main/resources/static/img/eeuu-flag.jpg" width="65" height="40" alt="English" />
   </a>
 </div>

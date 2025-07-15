@@ -20,12 +20,12 @@
 <br>
 
 <div align="right">
-     <a href="./src/main/resources/static/translation/README.es.md" target="_blank">
-       <img src="./src/main/resources/static/img/arg-flag.jpg" width="65" height="40" />
-   </a>
-    <a href="https://github.com/andresWeitzel/emails-notifications-MailHog" target="_blank">
-       <img src="./src/main/resources/static/img/eeuu-flag.jpg" width="65" height="40" />
-   </a>
+  <a href="./src/main/resources/static/translation/README.es.md" target="_blank">
+    <img src="./src/main/resources/static/img/arg-flag.jpg" width="65" height="40" alt="Español" />
+  </a>
+  <a href="https://github.com/andresWeitzel/emails-notifications-MailHog" target="_blank">
+    <img src="./src/main/resources/static/img/eeuu-flag.jpg" width="65" height="40" alt="English" />
+  </a>
 </div>
 
 

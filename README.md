@@ -5,10 +5,13 @@
 <div align="right">
     <img width="20" height="20" src="./src/main/resources/static/icons/backend/java/png/log-four-j.png" />
     <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/docker.png" />
+    <img width="20" height="20" src="./src/main/resources/static/icons/database/png/postgres.png" />
     <img width="24" height="24" src="./src/main/resources/static/icons/backend/java/png/java.png" />
     <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/maven.png" />
     <img width="22" height="22" src="./src/main/resources/static/icons/devops/png/postman.png" />
     <img width="22" height="22" src="./src/main/resources/static/icons/devops/png/git.png" />
+	  <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/prometheus.png" />
+    <img width="22" height="22" src="./src/main/resources/static/icons/devops/png/grafana.png" />   
     <img width="20" height="20" src="./src/main/resources/static/icons/backend/java/png/junit.png" />
     <img width="20" height="20" src="./src/main/resources/static/icons/devops/png/swagger.png" />
     <img width="20" height="20" src="./src/main/resources/static/icons/backend/java/png/spring-boot.png" />
@@ -29,13 +32,14 @@
 </div>
 
 
+<br>
+
+
 <div align="center">
 
 # User Management Email API ![(status-completed)](./src/main/resources/static/icons/badges/status-completed.svg)
 
 </div>
-
-<br>
 
 A comprehensive REST API developed with Spring Boot to manage users and send email notifications using Mailpit as the SMTP server. It integrates seamlessly with PostgreSQL for data storage, and includes features for audit logging, Prometheus monitoring, Grafana dashboards, and automatic API documentation with Swagger/OpenAPI.
 

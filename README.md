@@ -29,8 +29,6 @@
 </div>
 
 
-<br>
-
 <div align="center">
 
 # User Management Email API ![(status-completed)](./src/main/resources/static/icons/badges/status-completed.svg)

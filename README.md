@@ -104,6 +104,14 @@ A comprehensive REST API developed with Spring Boot to manage users and send ema
 
 <br>
 
+#### [Watch Functional test playlist](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
+
+  <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
+    <img src="./src/main/resources/static/img/email-project_yt.png" />
+  </a> 
+
+<br>
+
 ### Repository Clone
 ```git
 git clone https://github.com/andresWeitzel/email-api-service-MailPit
@@ -211,6 +219,14 @@ email-api-service-MailPit/
 
 <details>
 <summary>7. API Examples</summary>
+
+<br>
+
+#### [Watch Functional test playlist](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
+
+  <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
+    <img src="./src/main/resources/static/img/email-project_yt.png" />
+  </a> 
 
 <br>
 
@@ -1020,18 +1036,9 @@ The system provides comprehensive monitoring and reporting capabilities:
 
 </details>
 
-<details>
-<summary>10. Functionality Test</summary>
-
-<br>
-
-#### Watch video demonstration
-* [Functional tests video](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C) <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C" target="_blank"> <img src="./src/main/resources/static/icons/social-networks/yt.png" width="25" /></a>
-
-</details>
 
 <details>
-<summary>11. Contributing</summary>
+<summary>10. Contributing</summary>
 
 <br>
 
@@ -1044,7 +1051,7 @@ The system provides comprehensive monitoring and reporting capabilities:
 </details>
 
 <details>
-<summary>12. License</summary>
+<summary>11. License</summary>
 
 <br>
 

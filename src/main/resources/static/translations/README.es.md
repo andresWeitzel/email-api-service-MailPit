@@ -105,7 +105,7 @@ API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar 
 #### [Watch Functional test playlist](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
 
   <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
-    <img src="./src/main/resources/static/img/email-project_yt.png" />
+    <img src="../img/email-project_yt.png" />
   </a> 
 
 <br>
@@ -218,7 +218,7 @@ email-api-service-MailPit/
 #### [Watch Functional test playlist](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
 
   <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
-    <img src="./src/main/resources/static/img/email-project_yt.png" />
+    <img src="../img/email-project_yt.png" />
   </a> 
 
 <br>

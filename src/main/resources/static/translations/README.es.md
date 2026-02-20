@@ -38,18 +38,67 @@
 
 </div>
 
+API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar notificaciones por email utilizando Mailpit como servidor SMTP. Se integra perfectamente con PostgreSQL para el almacenamiento de datos, e incluye características para registro de auditoría, monitoreo con Prometheus, dashboards de Grafana y documentación automática de API con Swagger/OpenAPI.
+
+*   [Lista de reproducción de pruebas funcionales](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C) <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C" target="_blank"> <img src="../icons/social-networks/yt.png" width="25" /></a>
+
+<br>
+
+## Índice 📜
+
+<details>
+  <summary> Ver detalles </summary>
+
+<div align="right">
+
+`Última actualización: 20/02/26` 
+
+</div>
+
+### Sección 1) Descripción, Configuración y Tecnologías
+
+*   [1.0) Descripción del Proyecto.](#10-descripción-del-proyecto-)
+*   [1.1) Ejecución del Proyecto.](#11-ejecución-del-proyecto-)
+*   [1.2) Estructura del Proyecto.](#12-estructura-del-proyecto-)
+*   [1.3) Tecnologías.](#13-tecnologías-)
+
+### Sección 2) Endpoints y Ejemplos
+
+*   [2.0) Endpoints y Recursos.](#20-endpoints-y-recursos-)
+*   [2.1) Ejemplos de Gestión de Usuarios.](#21-ejemplos-de-gestión-de-usuarios-)
+*   [2.2) Ejemplos de Registro de Auditoría.](#22-ejemplos-de-registro-de-auditoría-)
+*   [2.3) Ejemplos de Emails de Mailpit.](#23-ejemplos-de-emails-de-mailpit-)
+
+### Sección 3) Flujo de Procesamiento, Validaciones y Monitoreo
+
+*   [3.0) Flujo de Procesamiento.](#30-flujo-de-procesamiento-)
+*   [3.1) Validaciones Implementadas.](#31-validaciones-implementadas-)
+*   [3.2) Monitoreo y Reportes.](#32-monitoreo-y-reportes-)
+
+### Sección 4) Pruebas de Funcionalidad, Contribuir y Licencia
+
+*   [4.0) Prueba de Funcionalidad.](#40-prueba-de-funcionalidad-)
+*   [4.1) Contribuir.](#41-contribuir-)
+*   [4.2) Licencia.](#42-licencia-)
+
+<br>
+
+</details>
+
+<br>
+
+## Sección 1) Descripción, Configuración y Tecnologías
+
+### 1.0) Descripción del Proyecto [🔝](#índice-)
+
+<details>
+   <summary>Ver detalles</summary>
+
+  <br>
 
 API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar notificaciones por email utilizando Mailpit como servidor SMTP. Se integra perfectamente con PostgreSQL para el almacenamiento de datos, e incluye características para registro de auditoría, monitoreo con Prometheus, dashboards de Grafana y documentación automática de API con Swagger/OpenAPI.
 
-* [Lista de reproducción de pruebas funcionales](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C) <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C" target="_blank"> <img src="../icons/social-networks/yt.png" width="25" /></a>
-
-
-## Secciones
-
-<details>
-<summary>1. Características</summary>
-
-<br>
+**Características Principales:**
 
 * Gestión de Usuarios: Operaciones CRUD completas para la gestión de usuarios
 * Notificaciones por Email: Envío automático de emails para eventos de usuarios
@@ -60,13 +109,7 @@ API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar 
 * Integración de Base de Datos: Integración robusta con PostgreSQL
 * Visualización de Métricas: Dashboards de Grafana para monitoreo del sistema
 
-</details>
-
-
-<details>
-<summary>2. Requisitos</summary>
-
-<br>
+**Requisitos:**
 
 * Java 17 o superior
 * Docker y Docker Compose
@@ -74,35 +117,18 @@ API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar 
 * PostgreSQL (si se ejecuta sin Docker)
 * Mailpit (si se ejecuta sin Docker)
 
-</details>
-
-<details>
-<summary>3. Tecnologías y Dependencias</summary>
-
 <br>
-
-* Spring Boot: Framework principal para construir aplicaciones Java
-* Spring Boot Starter Web: Para crear aplicaciones web RESTful
-* Spring Boot Starter Mail: Para manejar emails
-* Spring Boot Starter Data JPA: Para operaciones de base de datos
-* Spring Boot Starter Actuator: Para monitoreo y métricas
-* PostgreSQL: Base de datos para persistencia de datos
-* Mailpit: Servidor SMTP para pruebas locales de email
-* Docker & Docker Compose: Para containerización y orquestación
-* Prometheus: Para recolección de métricas
-* Grafana: Para visualización de métricas
-* Swagger/OpenAPI: Para documentación de API
-* Lombok: Para reducir código repetitivo
-* JUnit: Para pruebas unitarias
 
 </details>
 
+### 1.1) Ejecución del Proyecto [🔝](#índice-)
+
 <details>
-<summary>4. Configuración y Ejecución</summary>
+   <summary>Ver detalles</summary>
 
 <br>
 
-#### [Watch Functional test playlist](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
+#### [Ver lista de reproducción de pruebas funcionales](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
 
   <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
     <img src="../img/email-project_yt.png" />
@@ -110,13 +136,13 @@ API REST integral desarrollada con Spring Boot para gestionar usuarios y enviar 
 
 <br>
 
-### Clonar Repositorio
+#### Clonar Repositorio
 ```git
 git clone https://github.com/andresWeitzel/email-api-service-MailPit
 cd email-api-service-MailPit
 ```
 
-### Configuración de Docker Compose para Desarrollo
+#### Configuración de Docker Compose para Desarrollo
 
 * Antes de construir y ejecutar los contenedores, asegúrate de tener Docker ejecutándose (para Windows, usa [Docker Desktop](https://www.docker.com/products/docker-desktop/))
 * Una vez instalado, asegúrate de que Docker esté ejecutándose
@@ -141,12 +167,16 @@ docker-compose up
 mvn spring-boot:run
 ```
 
+<br>
+
 </details>
 
-<details>
-<summary>5. Estructura del Proyecto</summary>
+### 1.2) Estructura del Proyecto [🔝](#índice-)
 
-<br>
+<details>
+   <summary>Ver detalles</summary>
+
+  <br>
 
 ```
 email-api-service-MailPit/
@@ -171,7 +201,7 @@ email-api-service-MailPit/
 └── README.md                    # Documentación del proyecto
 ```
 
-### Componentes Principales
+#### Componentes Principales
 
 * **Controllers**: Manejan solicitudes y respuestas HTTP
 * **Services**: Implementan la lógica de negocio
@@ -181,49 +211,158 @@ email-api-service-MailPit/
 * **Config**: Clases de configuración de la aplicación
 * **Exceptions**: Manejo personalizado de excepciones
 
-</details>
-
-<details>
-<summary>6. Flujo de Procesamiento</summary>
-
 <br>
-
-1. **Gestión de Usuarios**: 
-   * Operaciones de crear, leer, actualizar y eliminar usuarios
-   * Notificaciones por email enviadas automáticamente para eventos de usuarios
-   * Registro de auditoría para todas las acciones relacionadas con usuarios
-
-2. **Procesamiento de Email**:
-   * Integración del servicio de email con el servidor SMTP de Mailpit
-   * Generación de emails basada en plantillas
-   * Seguimiento del estado de entrega de emails
-
-3. **Registro de Auditoría**:
-   * Seguimiento integral de todas las acciones del sistema
-   * Capacidades de filtrado por entidad, acción, nombre de usuario y detalles
-   * Retención de datos históricos
-
-4. **Monitoreo y Observabilidad**:
-   * Verificaciones de salud en tiempo real a través de Spring Boot Actuator
-   * Recolección de métricas con Prometheus
-   * Visualización de dashboard con Grafana
 
 </details>
 
+### 1.3) Tecnologías [🔝](#índice-)
+
 <details>
-<summary>7. Ejemplos de API</summary>
+   <summary>Ver detalles</summary>
+
+  <br>
+
+| **Tecnología** | **Propósito** |
+| ------------- | ------------- |
+| [Spring Boot](https://spring.io/projects/spring-boot) | Framework principal para construir aplicaciones Java |
+| [Spring Boot Starter Web](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) | Para crear aplicaciones web RESTful |
+| [Spring Boot Starter Mail](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) | Para manejar emails |
+| [Spring Boot Starter Data JPA](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) | Para operaciones de base de datos |
+| [Spring Boot Starter Actuator](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) | Para monitoreo y métricas |
+| [PostgreSQL](https://www.postgresql.org/) | Base de datos para persistencia de datos |
+| [Mailpit](https://mailpit.axllent.org/) | Servidor SMTP para pruebas locales de email |
+| [Docker & Docker Compose](https://www.docker.com/) | Para containerización y orquestación |
+| [Prometheus](https://prometheus.io/) | Para recolección de métricas |
+| [Grafana](https://grafana.com/) | Para visualización de métricas |
+| [Swagger/OpenAPI](https://swagger.io/) | Para documentación de API |
+| [Lombok](https://projectlombok.org/) | Para reducir código repetitivo |
+| [JUnit](https://junit.org/) | Para pruebas unitarias |
+| [Log4j](https://logging.apache.org/log4j/) | Para logging de la aplicación |
+| [Maven](https://maven.apache.org/) | Gestión de construcción y dependencias |
+| [Git](https://git-scm.com/) | Control de versiones |
+| [Postman](https://www.postman.com/) | Pruebas de API |
 
 <br>
 
-#### [Watch Functional test playlist](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
-
-  <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
-    <img src="../img/email-project_yt.png" />
-  </a> 
+</details>
 
 <br>
 
-### Ejemplos de Gestión de Usuarios
+## Sección 2) Endpoints y Ejemplos
+
+### 2.0) Endpoints y Recursos [🔝](#índice-)
+
+<details>
+   <summary>Ver detalles</summary>
+
+<br>
+
+#### API de Registro de Auditoría
+
+  - `POST /api/v1/audit-log`  
+  ➡️ [http://localhost:8080/api/v1/audit-log](http://localhost:8080/api/v1/audit-log)
+
+  - `PUT /api/v1/audit-log/{id}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/{id}](http://localhost:8080/api/v1/audit-log/1)
+  
+  - `DELETE /api/v1/audit-log/{id}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/{id}](http://localhost:8080/api/v1/audit-log/1)
+  
+  - `GET /api/v1/audit-log`  
+    ➡️ [http://localhost:8080/api/v1/audit-log](http://localhost:8080/api/v1/audit-log)
+  
+  - `GET /api/v1/audit-log/entity?entity={entityName}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/entity?entity=Usuario](http://localhost:8080/api/v1/audit-log/entity?entity=Usuario)
+  
+  - `GET /api/v1/audit-log/action?action={actionType}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/action?action=CREAR](http://localhost:8080/api/v1/audit-log/action?action=CREAR)
+  
+  - `GET /api/v1/audit-log/username?username={username}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/username?username=admin](http://localhost:8080/api/v1/audit-log/username?username=admin)
+  
+  - `GET /api/v1/audit-log/details?details={details}`  
+    ➡️ [http://localhost:8080/api/v1/audit-log/details?details=Creada+nueva+cuenta](http://localhost:8080/api/v1/audit-log/details?details=Creada+nueva+cuenta)
+
+#### API de Usuarios
+  
+  - `POST /api/v1/users`  
+    ➡️ [http://localhost:8080/api/v1/users](http://localhost:8080/api/v1/users)
+  
+  - `PUT /api/v1/users/{id}`  
+    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
+  
+  - `DELETE /api/v1/users/{id}`  
+    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
+  
+  - `GET /api/v1/users/{id}`  
+    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
+  
+  - `GET /api/v1/users`  
+    ➡️ [http://localhost:8080/api/v1/users](http://localhost:8080/api/v1/users)
+
+#### Swagger UI
+
+  - `GET /swagger-ui/index.html`  
+    ➡️ [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+  - `GET /v3/api-docs` – Documentación OpenAPI  
+    ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+#### Endpoints de Actuator
+
+  - `GET /actuator`  
+    ➡️ [http://localhost:8080/actuator](http://localhost:8080/actuator)
+
+  - `GET /actuator/health`  
+    ➡️ [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
+
+  - `GET /actuator/metrics`  
+    ➡️ [http://localhost:8080/actuator/metrics](http://localhost:8080/actuator/metrics)
+
+  - `GET /actuator/prometheus`  
+    ➡️ [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus)
+
+  - `GET /actuator/env`  
+    ➡️ [http://localhost:8080/actuator/env](http://localhost:8080/actuator/env)
+
+#### MailPit
+
+  - `Interfaz Web`  
+    ➡️ [http://localhost:8025](http://localhost:8025)
+  
+  - `Servidor SMTP` 
+    ➡️ `smtp://localhost:1025`
+
+#### Prometheus
+
+  - `Interfaz Web`
+    ➡️ [http://localhost:9090](http://localhost:9090)
+
+#### Grafana
+
+  - `Interfaz Web` 
+    ➡️ [http://localhost:3000](http://localhost:3000)  
+    🧾 Credenciales por defecto:
+    - Usuario: `admin`
+    - Contraseña: `admin`
+
+#### PostgreSQL
+
+  - `URL JDBC`  
+    ➡️ `jdbc:postgresql://localhost:5432/mydatabase`  
+    *  Usuario: `user`  
+    *  Contraseña: `password`
+
+<br>
+
+</details>
+
+### 2.1) Ejemplos de Gestión de Usuarios [🔝](#índice-)
+
+<details>
+   <summary>Ver detalles</summary>
+
+<br>
 
 #### Crear Usuario
 ```bash
@@ -296,6 +435,10 @@ Hola Juan Pérez,
 
 <br>
 
+---
+
+<br>
+
 #### Obtener Todos los Usuarios
 ```bash
 curl -X GET http://localhost:8080/api/v1/users
@@ -345,6 +488,10 @@ curl -X GET http://localhost:8080/api/v1/users
   "empty": false
 }
 ```
+
+<br>
+
+---
 
 <br>
 
@@ -404,6 +551,10 @@ Tu cuenta ha sido actualizada exitosamente.
 
 <br>
 
+---
+
+<br>
+
 #### Eliminar Usuario
 ```bash
 curl -X DELETE http://localhost:8080/api/v1/users/1
@@ -444,6 +595,10 @@ Tu cuenta ha sido eliminada exitosamente.
 
 <br>
 
+---
+
+<br>
+
 #### Obtener Usuario por ID
 ```bash
 curl -X GET http://localhost:8080/api/v1/users/1
@@ -475,7 +630,204 @@ curl -X GET http://localhost:8080/api/v1/users/1
 
 <br>
 
-### Ejemplos de Registro de Auditoría
+---
+
+<br>
+
+#### Códigos de Estado HTTP
+
+**Códigos de Estado de Respuesta Comunes:**
+
+- **200 OK**: Solicitud exitosa
+- **201 Created**: Recurso creado exitosamente
+- **400 Bad Request**: Error de validación o datos inválidos
+- **404 Not Found**: Recurso no encontrado
+- **409 Conflict**: Conflicto de recurso (ej: email duplicado)
+- **500 Internal Server Error**: Error del servidor
+
+<br>
+
+---
+
+<br>
+
+#### 📧 Resumen de Notificaciones por Email
+
+**Los emails se envían a Mailpit SOLO para operaciones exitosas:**
+
+✅ **CREAR Usuario** → Email de bienvenida enviado
+✅ **ACTUALIZAR Usuario** → Email de notificación de actualización enviado  
+✅ **ELIMINAR Usuario** → Email de confirmación de eliminación enviado
+❌ **Errores de Validación** → No se envía email
+❌ **Email Duplicado** → No se envía email
+❌ **Usuario No Encontrado** → No se envía email
+
+<br>
+
+---
+
+<br>
+
+#### Escenarios de Error Comunes
+
+**Prueba estos para testear el manejo de errores:**
+
+**1. Crear Usuario con Nombre Faltante:**
+```bash
+curl -X POST http://localhost:8080/api/v1/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "juan.perez@ejemplo.com"
+  }'
+```
+**Respuesta Esperada:**
+```json
+{
+  "errors": {
+    "name": "El nombre es obligatorio"
+  },
+  "timestamp": "2025-07-14T17:21:59.3410006",
+  "status": 400
+}
+```
+
+**2. Crear Usuario con Email Inválido:**
+```bash
+curl -X POST http://localhost:8080/api/v1/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Juan Pérez",
+    "email": "email-invalido"
+  }'
+```
+**Respuesta Esperada:**
+```json
+{
+  "errors": {
+    "email": "El email es inválido"
+  },
+  "timestamp": "2025-07-14T17:21:59.3410006",
+  "status": 400
+}
+```
+
+**3. Crear Usuario con Email Duplicado:**
+```bash
+# Primero, crear un usuario
+curl -X POST http://localhost:8080/api/v1/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Juan Pérez",
+    "email": "juan.perez@ejemplo.com"
+  }'
+
+# Luego intentar crear otro usuario con el mismo email
+curl -X POST http://localhost:8080/api/v1/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "María García",
+    "email": "juan.perez@ejemplo.com"
+  }'
+```
+**Respuesta Esperada:**
+```json
+{
+  "errors": "El email ya está en uso: El email juan.perez@ejemplo.com ya existe.",
+  "timestamp": "2025-07-14T17:30:37.1875171",
+  "status": 400
+}
+```
+
+**📧 Email de Mailpit (NO se envía email para error de email duplicado):**
+```
+No se enviará email a Mailpit cuando hay un error de email duplicado.
+La creación del usuario falla antes de que se llame al servicio de email.
+```
+
+**4. Obtener Usuario Inexistente:**
+```bash
+curl -X GET http://localhost:8080/api/v1/users/999
+```
+**Respuesta Esperada:**
+```json
+{
+  "errors": "Usuario no encontrado con id: 999",
+  "timestamp": "2025-07-14T17:50:25.1234567",
+  "status": 404
+}
+```
+
+**📧 Email de Mailpit (NO se envía email para error de no encontrado):**
+```
+No se enviará email a Mailpit cuando hay un error de "no encontrado".
+La operación falla antes de que se llame al servicio de email.
+```
+
+<br>
+
+---
+
+<br>
+
+#### Guía de Pruebas Paso a Paso
+
+**1. Iniciar la Aplicación:**
+```bash
+docker-compose up
+```
+
+**2. Crear un Usuario:**
+```bash
+curl -X POST http://localhost:8080/api/v1/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Juan Pérez",
+    "email": "juan.perez@ejemplo.com"
+  }'
+```
+
+**3. Verificar Mailpit para Email:**
+- Abre http://localhost:8025 en tu navegador
+- Deberías ver un email de bienvenida enviado a juan.perez@ejemplo.com
+
+**4. Obtener Todos los Usuarios:**
+```bash
+curl -X GET http://localhost:8080/api/v1/users
+```
+
+**5. Actualizar el Usuario:**
+```bash
+curl -X PUT http://localhost:8080/api/v1/users/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Juan Pérez Actualizado",
+    "email": "juan.actualizado@ejemplo.com"
+  }'
+```
+
+**6. Verificar Mailpit Nuevamente:**
+- Actualiza http://localhost:8025
+- Deberías ver un email de notificación de actualización
+
+**7. Eliminar el Usuario:**
+```bash
+curl -X DELETE http://localhost:8080/api/v1/users/1
+```
+
+**8. Verificación Final de Mailpit:**
+- Verifica http://localhost:8025 una vez más
+- Deberías ver un email de confirmación de eliminación
+
+<br>
+
+</details>
+
+### 2.2) Ejemplos de Registro de Auditoría [🔝](#índice-)
+
+<details>
+   <summary>Ver detalles</summary>
+
+<br>
 
 #### Crear Registro de Auditoría
 ```bash
@@ -504,6 +856,10 @@ curl -X POST http://localhost:8080/api/v1/audit-log \
   "message": "Registro de auditoría creado exitosamente"
 }
 ```
+
+<br>
+
+---
 
 <br>
 
@@ -543,6 +899,10 @@ curl -X PUT http://localhost:8080/api/v1/audit-log/1 \
   "status": 404
 }
 ```
+
+<br>
+
+---
 
 <br>
 
@@ -646,271 +1006,14 @@ curl -X GET "http://localhost:8080/api/v1/audit-log/details?details=Creada+nueva
 
 <br>
 
-### Códigos de Estado HTTP
+</details>
 
-**Códigos de Estado de Respuesta Comunes:**
+### 2.3) Ejemplos de Emails de Mailpit [🔝](#índice-)
 
-- **200 OK**: Solicitud exitosa
-- **201 Created**: Recurso creado exitosamente
-- **400 Bad Request**: Error de validación o datos inválidos
-- **404 Not Found**: Recurso no encontrado
-- **409 Conflict**: Conflicto de recurso (ej: email duplicado)
-- **500 Internal Server Error**: Error del servidor
+<details>
+   <summary>Ver detalles</summary>
 
 <br>
-
-### Guía de Pruebas Paso a Paso
-
-**1. Iniciar la Aplicación:**
-```bash
-docker-compose up
-```
-
-**2. Crear un Usuario:**
-```bash
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Juan Pérez",
-    "email": "juan.perez@ejemplo.com"
-  }'
-```
-
-**3. Verificar Mailpit para Email:**
-- Abre http://localhost:8025 en tu navegador
-- Deberías ver un email de bienvenida enviado a juan.perez@ejemplo.com
-
-**4. Obtener Todos los Usuarios:**
-```bash
-curl -X GET http://localhost:8080/api/v1/users
-```
-
-**5. Actualizar el Usuario:**
-```bash
-curl -X PUT http://localhost:8080/api/v1/users/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Juan Pérez Actualizado",
-    "email": "juan.actualizado@ejemplo.com"
-  }'
-```
-
-**6. Verificar Mailpit Nuevamente:**
-- Actualiza http://localhost:8025
-- Deberías ver un email de notificación de actualización
-
-**7. Eliminar el Usuario:**
-```bash
-curl -X DELETE http://localhost:8080/api/v1/users/1
-```
-
-**8. Verificación Final de Mailpit:**
-- Verifica http://localhost:8025 una vez más
-- Deberías ver un email de confirmación de eliminación
-
-<br>
-
-### Escenarios de Error Comunes
-
-**Prueba estos para testear el manejo de errores:**
-
-**1. Crear Usuario con Nombre Faltante:**
-```bash
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "juan.perez@ejemplo.com"
-  }'
-```
-**Respuesta Esperada:**
-```json
-{
-  "errors": {
-    "name": "El nombre es obligatorio"
-  },
-  "timestamp": "2025-07-14T17:21:59.3410006",
-  "status": 400
-}
-```
-
-**2. Crear Usuario con Email Inválido:**
-```bash
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Juan Pérez",
-    "email": "email-invalido"
-  }'
-```
-**Respuesta Esperada:**
-```json
-{
-  "errors": {
-    "email": "El email es inválido"
-  },
-  "timestamp": "2025-07-14T17:21:59.3410006",
-  "status": 400
-}
-```
-
-**3. Crear Usuario con Email Duplicado:**
-```bash
-# Primero, crear un usuario
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Juan Pérez",
-    "email": "juan.perez@ejemplo.com"
-  }'
-
-# Luego intentar crear otro usuario con el mismo email
-curl -X POST http://localhost:8080/api/v1/users \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "María García",
-    "email": "juan.perez@ejemplo.com"
-  }'
-```
-**Respuesta Esperada:**
-```json
-{
-  "errors": "El email ya está en uso: El email juan.perez@ejemplo.com ya existe.",
-  "timestamp": "2025-07-14T17:30:37.1875171",
-  "status": 400
-}
-```
-
-**📧 Email de Mailpit (NO se envía email para error de email duplicado):**
-```
-No se enviará email a Mailpit cuando hay un error de email duplicado.
-La creación del usuario falla antes de que se llame al servicio de email.
-```
-
-**4. Obtener Usuario Inexistente:**
-```bash
-curl -X GET http://localhost:8080/api/v1/users/999
-```
-**Respuesta Esperada:**
-```json
-{
-  "errors": "Usuario no encontrado con id: 999",
-  "timestamp": "2025-07-14T17:50:25.1234567",
-  "status": 404
-}
-```
-
-**📧 Email de Mailpit (NO se envía email para error de no encontrado):**
-```
-No se enviará email a Mailpit cuando hay un error de "no encontrado".
-La operación falla antes de que se llame al servicio de email.
-```
-
-### 📧 Resumen de Notificaciones por Email
-
-**Los emails se envían a Mailpit SOLO para operaciones exitosas:**
-
-✅ **CREAR Usuario** → Email de bienvenida enviado
-✅ **ACTUALIZAR Usuario** → Email de notificación de actualización enviado  
-✅ **ELIMINAR Usuario** → Email de confirmación de eliminación enviado
-❌ **Errores de Validación** → No se envía email
-❌ **Email Duplicado** → No se envía email
-❌ **Usuario No Encontrado** → No se envía email
-
-<br>
-
-### Pruebas de Endpoints de Servicios Dockerizados
-
-- **API de Registro de Auditoría**
-
-  - `POST /api/v1/audit-log`  
-  ➡️ [http://localhost:8080/api/v1/audit-log](http://localhost:8080/api/v1/audit-log)
-
-  - `PUT /api/v1/audit-log/{id}`  
-    ➡️ [http://localhost:8080/api/v1/audit-log/{id}](http://localhost:8080/api/v1/audit-log/1)
-  
-  - `DELETE /api/v1/audit-log/{id}`  
-    ➡️ [http://localhost:8080/api/v1/audit-log/{id}](http://localhost:8080/api/v1/audit-log/1)
-  
-  - `GET /api/v1/audit-log`  
-    ➡️ [http://localhost:8080/api/v1/audit-log](http://localhost:8080/api/v1/audit-log)
-  
-  - `GET /api/v1/audit-log/entity?entity={entityName}`  
-    ➡️ [http://localhost:8080/api/v1/audit-log/entity?entity=Usuario](http://localhost:8080/api/v1/audit-log/entity?entity=Usuario)
-  
-  - `GET /api/v1/audit-log/action?action={actionType}`  
-    ➡️ [http://localhost:8080/api/v1/audit-log/action?action=CREAR](http://localhost:8080/api/v1/audit-log/action?action=CREAR)
-  
-  - `GET /api/v1/audit-log/username?username={username}`  
-    ➡️ [http://localhost:8080/api/v1/audit-log/username?username=admin](http://localhost:8080/api/v1/audit-log/username?username=admin)
-  
-  - `GET /api/v1/audit-log/details?details={details}`  
-    ➡️ [http://localhost:8080/api/v1/audit-log/details?details=Creada+nueva+cuenta](http://localhost:8080/api/v1/audit-log/details?details=Creada+nueva+cuenta)
-
-- **API de Usuarios**
-  
-  - `POST /api/v1/users`  
-    ➡️ [http://localhost:8080/api/v1/users](http://localhost:8080/api/v1/users)
-  
-  - `PUT /api/v1/users/{id}`  
-    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
-  
-  - `DELETE /api/v1/users/{id}`  
-    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
-  
-  - `GET /api/v1/users/{id}`  
-    ➡️ [http://localhost:8080/api/v1/users/{id}](http://localhost:8080/api/v1/users/1)
-  
-  - `GET /api/v1/users`  
-    ➡️ [http://localhost:8080/api/v1/users](http://localhost:8080/api/v1/users)
-
-- **Swagger UI:**
-  - `GET /swagger-ui/index.html`  
-    ➡️ [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
-
-  - `GET /v3/api-docs` – Documentación OpenAPI  
-    ➡️ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
-
-- **Endpoints de Actuator:**
-  - `GET /actuator`  
-    ➡️ [http://localhost:8080/actuator](http://localhost:8080/actuator)
-
-  - `GET /actuator/health`  
-    ➡️ [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
-
-  - `GET /actuator/metrics`  
-    ➡️ [http://localhost:8080/actuator/metrics](http://localhost:8080/actuator/metrics)
-
-  - `GET /actuator/prometheus`  
-    ➡️ [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus)
-
-  - `GET /actuator/env`  
-    ➡️ [http://localhost:8080/actuator/env](http://localhost:8080/actuator/env)
-
-- **MailPit:**
-  - `Interfaz Web`  
-    ➡️ [http://localhost:8025](http://localhost:8025)
-  
-  - `Servidor SMTP` 
-    ➡️ `smtp://localhost:1025`
-
-- **Prometheus:**
-  - `Interfaz Web`
-    ➡️ [http://localhost:9090](http://localhost:9090)
-
-- **Grafana:**
-  - `Interfaz Web` 
-    ➡️ [http://localhost:3000](http://localhost:3000)  
-    🧾 Credenciales por defecto:
-    - Usuario: `admin`
-    - Contraseña: `admin`
-
-- **PostgreSQL:**
-  - `URL JDBC`  
-    ➡️ `jdbc:postgresql://localhost:5432/mydatabase`  
-    *  Usuario: `user`  
-    *  Contraseña: `password`
-
-### Ejemplos de Emails de Mailpit
 
 **Cuando accedas a Mailpit en http://localhost:8025, verás emails como estos:**
 
@@ -984,12 +1087,51 @@ El Equipo del Servicio de API de Email
 - **Exportar**: Descargar emails para propósitos de prueba
 - **Tiempo Real**: Los emails aparecen instantáneamente cuando son enviados por la API
 
+<br>
+
 </details>
 
+<br>
+
+## Sección 3) Flujo de Procesamiento, Validaciones y Monitoreo
+
+### 3.0) Flujo de Procesamiento [🔝](#índice-)
+
 <details>
-<summary>8. Validaciones Implementadas</summary>
+   <summary>Ver detalles</summary>
+
+  <br>
+
+1. **Gestión de Usuarios**: 
+   * Operaciones de crear, leer, actualizar y eliminar usuarios
+   * Notificaciones por email enviadas automáticamente para eventos de usuarios
+   * Registro de auditoría para todas las acciones relacionadas con usuarios
+
+2. **Procesamiento de Email**:
+   * Integración del servicio de email con el servidor SMTP de Mailpit
+   * Generación de emails basada en plantillas
+   * Seguimiento del estado de entrega de emails
+
+3. **Registro de Auditoría**:
+   * Seguimiento integral de todas las acciones del sistema
+   * Capacidades de filtrado por entidad, acción, nombre de usuario y detalles
+   * Retención de datos históricos
+
+4. **Monitoreo y Observabilidad**:
+   * Verificaciones de salud en tiempo real a través de Spring Boot Actuator
+   * Recolección de métricas con Prometheus
+   * Visualización de dashboard con Grafana
 
 <br>
+
+</details>
+
+### 3.1) Validaciones Implementadas [🔝](#índice-)
+
+<details>
+   <summary>Ver detalles</summary>
+
+  <br>
 
 * **Validación de Datos de Usuario**:
   * Validación de formato de email
@@ -1012,12 +1154,16 @@ El Equipo del Servicio de API de Email
   * Manejo de códigos de estado HTTP
   * Formateo de respuestas de error
 
+<br>
+
 </details>
 
-<details>
-<summary>9. Monitoreo y Reportes</summary>
+### 3.2) Monitoreo y Reportes [🔝](#índice-)
 
-<br>
+<details>
+   <summary>Ver detalles</summary>
+
+  <br>
 
 El sistema proporciona capacidades integrales de monitoreo y reportes:
 
@@ -1027,13 +1173,37 @@ El sistema proporciona capacidades integrales de monitoreo y reportes:
 * **Reportes de Auditoría**: Rastro de auditoría integral para cumplimiento
 * **Reportes de Entrega de Email**: Estado de envío de email y seguimiento de entrega
 
+<br>
+
 </details>
 
+<br>
+
+## Sección 4) Pruebas de Funcionalidad, Contribuir y Licencia
+
+### 4.0) Prueba de Funcionalidad [🔝](#índice-)
 
 <details>
-<summary>10. Contribuir</summary>
+   <summary>Ver detalles</summary>
 
 <br>
+
+#### [Ver lista de reproducción de pruebas funcionales](https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C)
+
+  <a href="https://www.youtube.com/playlist?list=PLCl11UFjHurDSHfBJ-uQp55RG-xhL162C">
+    <img src="../img/email-project_yt.png" />
+  </a> 
+
+<br>
+
+</details>
+
+### 4.1) Contribuir [🔝](#índice-)
+
+<details>
+   <summary>Ver detalles</summary>
+
+  <br>
 
 1. Haz fork del proyecto
 2. Crea tu rama de características (`git checkout -b feature/CaracteristicaIncreible`)
@@ -1041,33 +1211,19 @@ El sistema proporciona capacidades integrales de monitoreo y reportes:
 4. Haz push a la rama (`git push origin feature/CaracteristicaIncreible`)
 5. Abre un Pull Request
 
+<br>
+
 </details>
 
-<details>
-<summary>11. Licencia</summary>
+### 4.2) Licencia [🔝](#índice-)
 
-<br>
+<details>
+   <summary>Ver detalles</summary>
+
+  <br>
 
 Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
 
+<br>
+
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
